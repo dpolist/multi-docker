@@ -14,7 +14,7 @@ after_success:
     - docker build -t dpolist/multi-nginx ./nginx
     - docker build -t dpolist/milti-server ./server
     - docker build -t dpolist/multi-worker ./worker
-    - docker login -u "$DOCKER_ID" -password "$DOCKER_PASSWORD"
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
     - docker push dpolist/multi-client
     - docker push dpolist/multi-nginx
     - docker push dpolist/multi-server
